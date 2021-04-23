@@ -7,6 +7,7 @@
 <div class="text-center">
     @if (this.User.Identity.IsAuthenticated)
     {
+        <p>Click on the button below to Check the TO Do's: </p>
         <button>ToDo List <a class="nav-link text-dark" asp-area="" asp-page="/ToDo/Index">Index</a>.</button>
 
     }

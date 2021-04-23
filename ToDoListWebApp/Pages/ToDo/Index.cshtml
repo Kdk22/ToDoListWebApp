@@ -10,12 +10,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/site.css">
     <title>Index</title>
 </head>
 <body>
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+<div class="wrapper">
+    <button class="createbutton">
+        <a asp-page="Create">Create New</a>
+    </button>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -37,7 +40,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.ToDOList[0].DoneDate)
             </th>
-            <th></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
