@@ -5,6 +5,16 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if (this.User.Identity.IsAuthenticated)
+    {
+        <button>ToDo List <a class="nav-link text-dark" asp-area="" asp-page="/ToDo/Index">Index</a>.</button>
+
+    }
+    else
+    {
+        <l><h1 class="display-4">Chatr Mobiles</h1></l>
+        <p>Click Here to Learn More <a href="https://www.chatrwireless.com/">About Chatr</a>.</p>
+        <img src="~/images/chatr-images.png" alt="Chatr Mobiles" width="500"
+             height="400">
+    }
 </div>
