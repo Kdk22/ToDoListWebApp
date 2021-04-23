@@ -11,12 +11,13 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/css/site.css">
+    <script  src="../../wwwroot/js/site.js"></script>
     <title>Index</title>
 </head>
 <body>
 <div class="wrapper">
     <button class="createbutton">
-        <a asp-page="Create">Create New</a>
+        <a id="newtask" asp-page="Create">Create New</a>
     </button>
 </div>
 <table class="table">
@@ -41,6 +42,7 @@
                 @Html.DisplayNameFor(model => model.ToDOList[0].DoneDate)
             </th>
             <th>Action</th>
+            <th>Copy to ClipBoard</th>
         </tr>
     </thead>
     <tbody>
@@ -69,9 +71,48 @@
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>
+            <td>
+                <a id="copyText" href="" > @Html.DisplayFor(modelItem => item.Title)</a>
+            </td>
         </tr>
 }
     </tbody>
 </table>
 </body>
 </html>
+<script>
+    document.getElementById("copyText").addEventListener("click", copy_password);
+
+    function copy_password() {
+        var copyText = document.getElementById("copyText");
+        var textArea = document.createElement("textarea");
+        textArea.value = copyText.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("Copy");
+        alert("Copied the text: " + textArea.value);
+        textArea.remove();
+    }
+</script>
+    @*window.addEventListener('offline', function (event) {
+        $('#newtask').attr("disabled", "disabled");
+    });
+    window.addEventListener(‘online’, function (event) {
+        $('#newtask').removeAttr('disabled');
+    });*@
+
+    @*$(window).load(function () {
+        $('#create').attr("disabled", "disabled");
+
+        $('#create').click(function () {
+
+            if ($(this).attr('checked') == true) {
+                $('#postme').removeAttr('disabled');
+            }
+            else {
+                $('#postme').attr("disabled", "disabled");
+
+            }
+        });
+    });*@
+    @*</script>*@
